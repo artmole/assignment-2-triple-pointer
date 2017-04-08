@@ -1,41 +1,41 @@
 #pragma once
 #include <string.h>
 
-struct stack {
+template<class T> struct stack {
 private: 
 	int m_size = 0;
-	int* m_elems = new int[0];
+	T* m_elems = new T[0];
 public:
-	void push(int arg)
+	void push(T arg)
 	{
 		m_size++;
-		int* new_elems = new int[m_size];
-		memcpy(new_elems, m_elems, sizeof(int)*(m_size - 1));
+		T* new_elems = new T[m_size];
+		memcpy(new_elems, m_elems, sizeof(T)*(m_size - 1));
 		new_elems[m_size-1] = arg;
-		m_elems = new int[m_size];
-		memcpy(m_elems, new_elems, sizeof(int)*(m_size));
+		m_elems = new T[m_size];
+		memcpy(m_elems, new_elems, sizeof(T)*(m_size));
 	}
-	int pop()
+	T pop()
 	{
 		m_size--;
-		int out = m_elems[m_size];		
-		int* new_elems = new int[m_size];
-		memcpy(new_elems, m_elems, sizeof(int)*(m_size));
-		m_elems = new int[m_size];
-		memcpy(m_elems, new_elems, sizeof(int)*(m_size));
+		T out = m_elems[m_size];
+		T* new_elems = new T[m_size];
+		memcpy(new_elems, m_elems, sizeof(T)*(m_size));
+		m_elems = new T[m_size];
+		memcpy(m_elems, new_elems, sizeof(T)*(m_size));
 		return out;
 	}
-	int back()
+	T back()
 	{
 		return m_elems[m_size-1];
 	}
-	int size()
+	T size()
 	{
 		return m_size;
 	}
 	void clear()
 	{
 		m_size = 0;
-		m_elems = new int[0];
+		m_elems = new T[0];
 	}
 };

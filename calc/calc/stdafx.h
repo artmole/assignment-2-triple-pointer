@@ -11,6 +11,7 @@
 #include <tchar.h>
 #include "MyStack.h"
 #include <iostream>
+#include <string>
 
 
 
