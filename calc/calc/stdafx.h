@@ -9,6 +9,9 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include "MyStack.h"
+#include <iostream>
+
 
 
 
