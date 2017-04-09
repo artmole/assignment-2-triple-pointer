@@ -13,7 +13,7 @@ private:
 	void new_function(char);
 	double get_number(int&);
 	int get_priority(char);
-	double calc(double a, double b, char func);
+	double calc(double, double, char);
 	void pop_func();
 public:
 	Calculator(string input);
