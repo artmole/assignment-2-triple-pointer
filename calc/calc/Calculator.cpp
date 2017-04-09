@@ -118,7 +118,7 @@ double Calculator::calc(double a, double b, char func)
 		return a / b;
 		break;
 	case '^':
-		return pow(b, a);
+		return pow(a, b);
 		break;
 	}
 }
