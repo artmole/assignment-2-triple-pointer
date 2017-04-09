@@ -15,6 +15,7 @@ Calculator::~Calculator()
 double Calculator::GetAnswear()
 {
 	Functions.Push('(');
+	char prev = '(';
 	for (int i = 0; i < args.length(); ++i)
 	{
 		if (isdigit(args[i]))
@@ -23,8 +24,12 @@ double Calculator::GetAnswear()
 		}
 		else
 		{
-			new_function(args[i]);
+			if (prev == '(' && args[i] == '-')
+				new_operand(-get_number(++i));
+			else
+				new_function(args[i]);
 		}
+		prev = args[i];
 	}
 	return Operands.Pop();
 }
@@ -117,4 +122,3 @@ double Calculator::calc(double a, double b, char func)
 		break;
 	}
 }
-
