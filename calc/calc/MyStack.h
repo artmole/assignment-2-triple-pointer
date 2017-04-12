@@ -21,12 +21,8 @@ public:
 		m_size++;
 		if (m_size > max_size *0.8)
 		{
-			int new_size = sizeof(m_elems) / sizeof(T) * 2;
-			T* new_elems = new T[new_size];
-			memcpy(new_elems, m_elems, sizeof(T)*(m_size - 1));
-			new_elems[m_size - 1] = arg;
-			m_elems = new T[new_size];
-			memcpy(m_elems, new_elems, sizeof(T)*(m_size));
+			max_size *= 2;
+			m_elems = (T*)realloc(m_elems, max_size * sizeof(T));
 		}
 		m_elems[m_size - 1] = arg;
 	}
@@ -34,14 +30,11 @@ public:
 	{
 		m_size--;
 		T out = m_elems[m_size];
-		/*if (m_size < max_size*0.4)
+		if (m_size < max_size*0.4)
 		{
-			int new_size = sizeof(m_elems) / sizeof(T) / 2;			
-			T* new_elems = new T[new_size];
-			memcpy(new_elems, m_elems, sizeof(T)*(m_size));
-			m_elems = new T[new_size];
-			memcpy(m_elems, new_elems, sizeof(T)*(m_size));
-		}*/
+			max_size /= 2;
+			m_elems = (T*)realloc(m_elems, max_size * sizeof(T));
+		}
 		return out;
 	}
 	T Back()
